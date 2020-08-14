@@ -1,12 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.send({
       cars: [{
-        vin: 123
+        vin: 111,
+        make: 'GMC',
+        model: 'Sierra'
       }, {
-        vin: 987
+        vin: 222,
+        make: 'GMC',
+        model: 'Canyon'
+      }, {
+        vin: 333,
+        make: 'Acura',
+        model: 'RDX'
       }]
   })
 });
