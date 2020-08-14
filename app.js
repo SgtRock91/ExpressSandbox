@@ -5,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
 
-var indexRouter = require('./routes/index');
+var swagger = require('swagger-ui-express');
+var doc = require('./swagger/index');
+
 const carsRouter = require('./routes/cars');
 
 var app = express();
@@ -21,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/', indexRouter);
+app.use('/api-docs', swagger.serve, swagger.setup(doc))
 app.use('/cars', carsRouter);
 
 // catch 404 and forward to error handler
