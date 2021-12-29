@@ -9,6 +9,7 @@ var swagger = require('swagger-ui-express');
 var doc = require('./swagger/index');
 
 const carsRouter = require('./routes/cars');
+const carsgql = require('./routes/carsgql');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cors());
 
 app.use('/api-docs', swagger.serve, swagger.setup(doc))
 app.use('/cars', carsRouter);
+carsgql.setup(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
